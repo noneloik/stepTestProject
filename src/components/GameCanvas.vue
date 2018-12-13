@@ -27,9 +27,9 @@
       generateNumber(from, to) {
         return Math.ceil(Math.random() * (to - from) + from)
       },
-       compareRandom() {
-            return Math.random() - 0.5;
-          },
+      //  compareRandom() {
+      //       return Math.random() - 0.5;
+      //     },
       generateMembers() {
         this.x = this.generateNumber(this.from, this.to);
         this.y = this.generateNumber(this.from, this.to);
@@ -39,7 +39,7 @@
           const newOption = this.expectedResult + this.generateNumber(-10, 10);
           this.answerOptions.push(newOption);
         }
-        this.answerOptions.sort(compareRandom);
+        // this.answerOptions.sort(compareRandom);
       },
 
     },
