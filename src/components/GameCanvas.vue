@@ -2,14 +2,16 @@
   <div class="alert alert-secondary greeting">
     <h1 class="pb-20">Please solve the below equation</h1>
     <h2> {{ x }} + {{ y }} = {{ result }} </h2>
-    <button v-for="(item, index) in answerOptions"
-    :key="index"
-    class="btn btn-primary answers">
-                    {{ item }}
-                    </button>
-
+    <button
+      v-for="(item, index) in answerOptions"
+      :key="index"
+      class="btn btn-primary answers"
+      @click="insertOption"
+    >
+    {{ item }}
+    </button>
     <hr>
-    <button @click="proceed"> Continue </button>
+    <button @click="proceed">Continue</button>
   </div>
 </template>
 
@@ -48,25 +50,28 @@
           return Math.random() - 0.5
         })
       }
-
+      this.shuffle(this.answerOptions)
     },
-    created() {
-      this.generateMembers()
-
+    shuffle(targetArray){
+      return targetArray.sort(() => {
+        return Math.random() - 0.5
+      })
     },
     insertOption(event){
-          this.result=event.target.value.innerHTML
+      this.result = event.target.innerHTML
     },
-    proceed(){
-      if(this.result==="?"){
-        alert('please select')
+    proceed () {
+      if (this.result === '?') {
+        alert('Please select the answer');
         return;
       }
-      if(this.result===this.expectedResult){
-          this.$emit('checkOneAnswer','Your answer is correct')
-      }
-      else{
-        this.$emit('checkOneAnswer', `Your answer is wrong, correct answer is ${this.expectedResult}! Would U like to proceed`)
+      if (this.result == this.expectedResult) {
+        this.$emit('checkOneAnswer', `Your answer is correct !
+        Would you like to proceed`)
+      } else {
+        this.$emit('checkOneAnswer', `Your answer is wrong,
+        Correct answer is ${this.expectedResult}!
+        Would you like to proceed`)
       }
       this.$emit('switchView', 'Info')
     }
