@@ -2,14 +2,9 @@
   <div class="alert alert-secondary greeting">
     <h1 class="pb-20">Please solve the below equation</h1>
     <h2> {{ x }} + {{ y }} = {{ result }} </h2>
-    <button
-      v-for="(item, index) in answerOptions"
-      :key="index"
-      class="btn btn-primary answers"
-      @click="insertOption"
-    >
-    {{ item }}
-    </button>
+    <button v-for="(item, index) in answerOptions" :key="index" class="btn btn-primary answers" @click="insertOption">
+      {{ item }}
+      </button>
     <hr>
     <button @click="proceed">Continue</button>
   </div>
@@ -27,7 +22,10 @@
         to: 100,
         expectedResult: 0,
         numberOfButtons: 3,
-        answerOptions: []
+        answerOptions: [],
+    //     intMsg:'',
+    //    currentStep:0,
+    //  numberOfSteps:3
       }
     },
     methods: {
@@ -41,41 +39,36 @@
         this.answerOptions.push(this.expectedResult)
         for (let i = 0; i < this.numberOfButtons - 1; i++) {
           const newOption = this.expectedResult + this.generateNumber(-10, 10)
-          this.answerOptions.push(newOption)
+          this.shuffle(this.answerOptions)
         }
-       this.answerOptions = compareRandom(this.answerOptions)
       },
-      compareRandom(targetArr) {
-        return targetArr.sort(()=>{
+      shuffle(targetArray) {
+        return targetArray.sort(() => {
           return Math.random() - 0.5
         })
-      }
-      this.shuffle(this.answerOptions)
-    },
-    shuffle(targetArray){
-      return targetArray.sort(() => {
-        return Math.random() - 0.5
-      })
-    },
-    insertOption(event){
-      this.result = event.target.innerHTML
-    },
-    proceed () {
-      if (this.result === '?') {
-        alert('Please select the answer');
-        return;
-      }
-      if (this.result == this.expectedResult) {
-        this.$emit('checkOneAnswer', `Your answer is correct !
-        Would you like to proceed`)
-      } else {
-        this.$emit('checkOneAnswer', `Your answer is wrong,
-        Correct answer is ${this.expectedResult}!
-        Would you like to proceed`)
-      }
-      this.$emit('switchView', 'Info')
+      },
+      insertOption(event) {
+        this.result = event.target.innerHTML
+      },
+      proceed() {
+        if (this.result === '?') {
+          alert('Please select the answer');
+          return;
+        }
+        if (this.result == this.expectedResult) {
+          this.$emit('checkOneAnswer', `Your answer is correct !
+          Would you like to proceed`)
+        } else {
+          this.$emit('checkOneAnswer', `Your answer is wrong,
+          Correct answer is ${this.expectedResult}!
+          Would you like to proceed`)
+        }
+        this.$emit('switchView', 'Info')
+      },
+      created() {
+        this.generateMembers()
+      },
     }
-  }
 </script>
 
 <style scoped>

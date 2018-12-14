@@ -1,21 +1,6 @@
 <template>
   <div class="">
     <div class="progress">
-<<<<<<< HEAD
-          <div class="progress-bar" role="progressbar" aria-valuenow="70"
-          aria-valuemin="0" aria-valuemax="100">
-          <span class="sr-only">70% Complete</span>
-          </div>
-        </div>
-    <transition name="rotate" mode="out-in">
-    <Start @startGame="switchView" v-if="currentView === 'start'"/>
-    <GameCanvas
-
-    v-else-if="currentView === 'gameCanvas'"/>
-    <Info
-
-    v-else-if="currentView==='Info'"></Info>
-=======
       <div
         class="progress-bar"
         role="progressbar"
@@ -36,7 +21,6 @@
         <Info
             :intMessage="intMessage"
             v-else-if="currentView === 'Info'"/>
->>>>>>> upstream/master
     </transition>
   </div>
 </template>
@@ -52,35 +36,19 @@ export default {
     data() {
         return {
           currentView: 'start',
-<<<<<<< HEAD
-          intMsg:'',
-          currentStep:0,
-          numberOfSteps:3
-=======
-          intMessage: '',
+          intMsg: '',
           currentStep: 0,
-          numberOfSteps: 3
->>>>>>> upstream/master
+          numberOfSteps:3
         }
     },
     components: {
       Start,
-<<<<<<< HEAD
-
-      GameCanvas,
-      Info
-    },
-    computed:{
-      currentWith(){
-        return this.currentStep/this.numberOfSteps*100
-=======
       GameCanvas,
       Info
     },
     computed: {
       currentWidth () {
         return (this.currentStep/this.numberOfSteps)*100 + '%';
->>>>>>> upstream/master
       }
     },
     methods: {
@@ -104,30 +72,13 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-.rotate-enter-active{
-=======
     .rotate-enter-active{
->>>>>>> upstream/master
        animation: rotateInX 0.3s linear;
     }
     .rotate-leave-active{
         animation: rotateOutX 0.3s linear;
     }
     .rotate-enter, .rotate-leave-to {
-<<<<<<< HEAD
-
-}
-    @keyframes rotateInX{
-        from{transform: rotateX(90deg);}
-        to{transform: rotateX(0deg);}
-    }
-    @keyframes rotateOutX{
-        from{transform: rotateX(0deg);}
-        to{transform: rotateX(90deg);}
-    }
-=======
->>>>>>> upstream/master
 
 }
     @keyframes rotateInX{

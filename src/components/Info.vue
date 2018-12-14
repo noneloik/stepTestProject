@@ -1,12 +1,7 @@
 <template>
   <div class="alert alert-secondary greeting">
-<<<<<<< HEAD
-    <h3>Next quetion?</h3>
-    <!-- <button @click="$emit('startGame', 'gameCanvas')">Get Started</button> -->
-=======
-    <h3>{{ intMessage }}</h3>
+    <h3>{{ intMsg }}</h3>
     <button >Next question</button>
->>>>>>> upstream/master
   </div>
 </template>
 
@@ -17,16 +12,10 @@ export default {
     return {
 
     }
-<<<<<<< HEAD
-  }
-}
-</script>a
-=======
   },
-  props: ['intMessage']
+  props: ['intMsg']
 }
 </script>
->>>>>>> upstream/master
 
 <style scoped>
 .greeting {
