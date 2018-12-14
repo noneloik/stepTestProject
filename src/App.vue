@@ -29,7 +29,7 @@
 import Start from './components/start'
 import Info from './components/Info'
 import GameCanvas from './components/GameCanvas'
-import Info from './components/Info'
+
 
 export default {
     name: 'App',
