@@ -1,7 +1,7 @@
 <template>
   <div class="alert alert-secondary greeting">
     <h3>{{ intMsg }}</h3>
-    <button >Next question</button>
+    <button @click="$emit('switchView', 'gameCanvas', true)">Next question</button>
   </div>
 </template>
 

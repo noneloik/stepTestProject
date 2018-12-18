@@ -64,6 +64,7 @@ export default {
         this.$emit('checkOneAnswer', `Your answer is wrong,
         Correct answer is ${this.expectedResult}!
         Would you like to proceed`)
+        this.$emit('success')
       }
       this.$emit('switchView', 'Info')
     }
